@@ -138,7 +138,7 @@ sub shape_match {
             my $capture = shift @captures;
             $result->{$symbol} =
               b($capture)->url_unescape->decode('UTF-8')->to_string
-              if $capture;
+              if defined $capture && length $capture;
         }
         return $result;
     }
