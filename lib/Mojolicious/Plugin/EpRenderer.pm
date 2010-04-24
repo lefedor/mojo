@@ -60,6 +60,9 @@ sub register {
                 # Be a bit more relaxed for helpers
                 $prepend .= q/no strict 'refs'; no warnings 'redefine';/;
 
+                # Allow add things to prepend @plugin register
+                $prepend .= $template->{prepend} if $template->{prepend};
+
                 # Helpers
                 for my $name (sort keys %{$r->helper}) {
                     next unless $name =~ /^\w+$/;
